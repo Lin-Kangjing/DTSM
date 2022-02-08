@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @FilePath: \DTSM\src\utils\routeConvert.js
+ * @Date: 2022-01-28 02:37:33
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2022-01-30 22:33:53
+ * @author: Lin_kangjing
+ */
 import cloneDeep from 'lodash.clonedeep'
 
 export function convertRoutes (nodes) {

@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @FilePath: \DTSM\src\main.js
+ * @Date: 2022-01-28 02:37:33
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2022-01-28 23:01:34
+ * @author: Lin_kangjing
+ */
 // with polyfills
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
@@ -6,8 +14,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store/'
-// import i18n from './locales'
-import { VueAxios } from './utils/request'
+import i18n from './locales'
 import ProLayout, { PageHeaderWrapper } from '@ant-design-vue/pro-layout'
 import themePluginConfig from '../config/themePluginConfig'
 
@@ -23,8 +30,6 @@ import './global.less' // global style
 
 Vue.config.productionTip = false
 
-// mount axios to `Vue.$http` and `this.$http`
-Vue.use(VueAxios)
 // use pro-layout components
 Vue.component('pro-layout', ProLayout)
 Vue.component('page-container', PageHeaderWrapper)
@@ -35,7 +40,7 @@ window.umi_plugin_ant_themeVar = themePluginConfig.theme
 new Vue({
   router,
   store,
-  // i18n,
+  i18n,
   // init localstorage, vuex, Logo message
   created: bootstrap,
   render: h => h(App)

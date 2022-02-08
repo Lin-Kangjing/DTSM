@@ -1,7 +1,7 @@
-import Vue from 'vue'
 import axios from 'axios'
 import router from '@/router'
 import store from '@/store'
+import storage from 'store'
 import message from 'ant-design-vue/es/message'
 import { ACCESS_TOKEN } from '@/store/mutation-types'
 import { axiosConfig, customConfig, getPendingKey, STATUS_CODE } from './config'
@@ -56,7 +56,7 @@ function httpErrorStatusHandle (error) {
         break
       case 401:
         msg = '您未登录，或者登录已经超时，请先登录！'
-        const token = Vue.ls.get(ACCESS_TOKEN)
+        const token = storage.get(ACCESS_TOKEN)
         if (token) {
           store.dispatch('Logout').then(() => {
             router.replace({
@@ -94,7 +94,7 @@ service.interceptors.request.use(
     // 合并默认参数
     config = { ...customConfig, ...config }
     // 处理token
-    const token = Vue.ls.get(ACCESS_TOKEN)
+    const token = storage.get(ACCESS_TOKEN)
     if (token) {
       config.headers.Authorization = 'bearer ' + token.access_token
     }
@@ -120,12 +120,12 @@ service.interceptors.response.use(
     removePending(response.config)
     // 关闭loading
     closeLoading(response.config)
-    // 开启code!==0的错误提示
-    if (response.config.codeMessageShow && response.data && response.data[STATUS_CODE] !== 0) {
-      message.error(response.data.message)
-      return Promise.reject(response.data)
+    //  是否开启接口请求结果错误信息提示
+    if (response.config.resultErrorMessageShow && response.data && response.data[STATUS_CODE] !== response.config.resultCorrectValue) {
+        message.error(response.data.message)
+        return Promise.reject(response.data)
     }
-    return response
+    return response.data
   },
   error => {
     // error.config 一般情况

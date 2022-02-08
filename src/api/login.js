@@ -1,4 +1,12 @@
-import request from '@/utils/request'
+/*
+ * @Description:登录接口模块
+ * @FilePath: \DTSM\src\api\login.js
+ * @Date: 2022-01-28 02:37:33
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2022-01-30 00:22:45
+ * @author: Lin_kangjing
+ */
+import { post, get } from '@/http/index'
 
 const userApi = {
   Login: '/auth/login',
@@ -25,46 +33,23 @@ const userApi = {
  * @returns {*}
  */
 export function login (parameter) {
-  return request({
-    url: userApi.Login,
-    method: 'post',
-    data: parameter
-  })
+  return post(userApi.Login, parameter)
 }
 
 export function getSmsCaptcha (parameter) {
-  return request({
-    url: userApi.SendSms,
-    method: 'post',
-    data: parameter
-  })
+  return get(userApi.SendSms, parameter)
 }
 
 export function getInfo () {
-  return request({
-    url: userApi.UserInfo,
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
+  return get(userApi.UserInfo, null, null, { resultCorrectValue: 0 })
 }
 
 export function getCurrentUserNav () {
-  return request({
-    url: userApi.UserMenu,
-    method: 'get'
-  })
+  return get(userApi.UserMenu)
 }
 
 export function logout () {
-  return request({
-    url: userApi.Logout,
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
+  return post(userApi.Logout, null, null, { resultCorrectValue: 0 })
 }
 
 /**
@@ -72,9 +57,5 @@ export function logout () {
  * @param parameter {*}
  */
 export function get2step (parameter) {
-  return request({
-    url: userApi.twoStepCode,
-    method: 'post',
-    data: parameter
-  })
+  return post(userApi.twoStepCode, parameter)
 }

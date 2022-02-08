@@ -42,6 +42,7 @@ const user = {
           commit('SET_TOKEN', result.token)
           resolve()
         }).catch(error => {
+          console.log(error)
           reject(error)
         })
       })
@@ -52,7 +53,6 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo().then(response => {
           const result = response.result
-
           if (result.role && result.role.permissions.length > 0) {
             const role = result.role
             role.permissions = result.role.permissions
@@ -63,6 +63,7 @@ const user = {
               }
             })
             role.permissionList = role.permissions.map(permission => { return permission.permissionId })
+
             commit('SET_ROLES', result.role)
             commit('SET_INFO', result)
           } else {

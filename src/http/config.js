@@ -1,3 +1,11 @@
+/*
+ * @Description:
+ * @FilePath: \DTSM\src\http\config.js
+ * @Date: 2022-01-28 02:37:33
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2022-01-30 20:35:59
+ * @author: Lin_kangjing
+ */
 // axios配置
 export const axiosConfig = {
   baseURL: process.env.VUE_APP_API_BASE_URL, // api base_url
@@ -15,7 +23,8 @@ export const customConfig = {
   cancelRequest: true, // 是否开启取消重复请求,
   loading: false, // 是否开启loading层效果,
   errorMessageShow: true, // 是否开启接口错误信息展示
-  codeMessageShow: true // 是否开启code不为0时的信息提示
+  resultErrorMessageShow: false, // 是否开启接口请求结果错误信息提示
+  resultCorrectValue: 200 // 是否开启接口请求结果错误信息提示 ，值等于resultValue则为正确的，不用消息提示
 }
 // 判断请求成功的字段
 export const STATUS_CODE = 'code'

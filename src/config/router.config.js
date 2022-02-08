@@ -4,7 +4,7 @@ import { bxAnaalyse } from '@/core/icons'
 
 const RouteView = {
   name: 'RouteView',
-  render: h => h('router-view')
+  render: (h) => h('router-view')
 }
 
 export const asyncRouterMap = [
@@ -13,8 +13,23 @@ export const asyncRouterMap = [
     name: 'index',
     component: BasicLayout,
     meta: { title: 'menu.home' },
-    redirect: '/dashboard/workplace',
+    redirect: '/test/blank',
     children: [
+      {
+        path: '/test',
+        name: 'test',
+        redirect: '/test/blank',
+        component: RouteView,
+        meta: { title: '测试', keepAlive: true, icon: bxAnaalyse, permission: ['test'] },
+        children: [
+          {
+            path: '/test/blank',
+            name: 'blank',
+            component: () => import('@/views/test/Blank'),
+            meta: { title: '空白页面', keepAlive: false, permission: ['test'] }
+          }
+        ]
+      },
       // dashboard
       // {
       //   path: '/dashboard',
@@ -35,12 +50,6 @@ export const asyncRouterMap = [
       //       name: 'Monitor',
       //       meta: { title: 'menu.dashboard.monitor', target: '_blank' }
       //     },
-      //     {
-      //       path: '/dashboard/workplace',
-      //       name: 'Workplace',
-      //       component: () => import('@/views/dashboard/Workplace'),
-      //       meta: { title: 'menu.dashboard.workplace', keepAlive: true, permission: ['dashboard'] }
-      //     }
       //   ]
       // },
       // forms
@@ -251,7 +260,12 @@ export const asyncRouterMap = [
                 path: '/account/settings/binding',
                 name: 'BindingSettings',
                 component: () => import('@/views/account/settings/Binding'),
-                meta: { title: 'account.settings.menuMap.binding', hidden: true, keepAlive: true, permission: ['user'] }
+                meta: {
+                  title: 'account.settings.menuMap.binding',
+                  hidden: true,
+                  keepAlive: true,
+                  permission: ['user']
+                }
               },
               {
                 path: '/account/settings/notification',

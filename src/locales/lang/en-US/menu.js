@@ -1,10 +1,18 @@
+/*
+ * @Description:
+ * @FilePath: \DTSM\src\locales\lang\en-US\menu.js
+ * @Date: 2022-01-28 02:37:33
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2022-01-28 21:39:04
+ * @author: Lin_kangjing
+ */
 export default {
     'menu.welcome': 'Welcome',
     'menu.home': 'Home',
-    'menu.dashboard': 'Dashboard',
-    'menu.dashboard.analysis': 'Analysis',
-    'menu.dashboard.monitor': 'Monitor',
-    'menu.dashboard.workplace': 'Workplace',
+    // 'menu.dashboard': 'Dashboard',
+    // 'menu.dashboard.analysis': 'Analysis',
+    // 'menu.dashboard.monitor': 'Monitor',
+    // 'menu.dashboard.workplace': 'Workplace',
     'menu.form': 'Form',
     'menu.form.basic-form': 'Basic Form',
     'menu.form.step-form': 'Step Form',

@@ -1,22 +1,22 @@
 /*
  * @Description:
- * @FilePath: \DTSMv3\src\http\http.js
+ * @FilePath: \DTSM\src\http\index.js
  * @Date: 2022-01-24 15:18:57
  * @LastEditors: Lin_kangjing
- * @LastEditTime: 2022-01-24 16:07:06
+ * @LastEditTime: 2022-01-30 00:21:09
  * @author: Lin_kangjing
  */
 import axios from './axios'
 import Qs from 'qs'
-import { filterNull, toType } from '@/utils/util'
 
 export function apiAxios (method, url, params, headers, setting) {
-  if (params) {
-    params = filterNull(params)
-  }
-  if (headers) {
-    headers = filterNull(headers)
-  }
+  // if (params) {
+  //   params = filterNull(params)
+  // }
+  // if (headers) {
+  //   headers = filterNull(headers)
+  // }
+  headers = headers || {}
 
   // 处理配置参数
   let config = {
@@ -34,7 +34,7 @@ export function apiAxios (method, url, params, headers, setting) {
         const formData = new FormData()
         for (const key in data) {
           if (Object.hasOwnProperty.call(data, key)) {
-            if (toType(data[key]) === 'array') {
+            if (Array.isArray(data[key])) {
               for (const e of data[key]) {
                 formData.append(key, e)
               }
@@ -74,5 +74,5 @@ export function post (url, params, headers, setting) {
 export function formData (url, params, headers, setting) {
   headers = headers || {}
   headers['Content-Type'] = 'multipart/form-data'
-  return apiAxios('POST', url, params, headers)
+  return apiAxios('POST', url, params, headers, setting)
 }

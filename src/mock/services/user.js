@@ -2,7 +2,6 @@ import Mock from 'mockjs2'
 import { builder } from '../util'
 
 const info = options => {
-  console.log('options', options)
   const userInfo = {
     id: '4291d7da9005377ec9aec4a71ea837f',
     name: '天野远子',
@@ -32,8 +31,8 @@ const info = options => {
     permissions: [
       {
         roleId: 'admin',
-        permissionId: 'dashboard',
-        permissionName: '仪表盘',
+        permissionId: 'test',
+        permissionName: '测试',
         actions:
           '[{"action":"add","defaultCheck":false,"describe":"新增"},{"action":"query","defaultCheck":false,"describe":"查询"},{"action":"get","defaultCheck":false,"describe":"详情"},{"action":"update","defaultCheck":false,"describe":"修改"},{"action":"delete","defaultCheck":false,"describe":"删除"}]',
         actionEntitySet: [

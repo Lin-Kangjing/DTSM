@@ -1,3 +1,11 @@
+/*
+ * @Description:路由验证，控制
+ * @FilePath: \DTSM\src\permission.js
+ * @Date: 2022-01-28 02:37:33
+ * @LastEditors: Lin_kangjing
+ * @LastEditTime: 2022-01-30 21:56:24
+ * @author: Lin_kangjing
+ */
 import router from './router'
 import store from './store'
 import storage from 'store'
@@ -12,7 +20,7 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const allowList = ['login', 'register', 'registerResult'] // no redirect allowList
 const loginRoutePath = '/user/login'
-const defaultRoutePath = '/dashboard/workplace'
+const defaultRoutePath = '/test/blank'
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
